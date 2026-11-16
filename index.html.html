@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101116">
+<title>lumina — gerador de imagens</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{color-scheme:dark;--bg:#101116;--panel:#17181f;--line:#2b2c36;--muted:#9395a4;--text:#f4f3f7;--violet:#b6a0ff;--pink:#fb9fc8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#322649 0,transparent 35%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit}.wrap{max-width:1160px;margin:auto;padding:30px 28px 70px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px}.brand{display:flex;align-items:center;gap:11px;font:800 20px Manrope,sans-serif;letter-spacing:-.8px}.logo{width:35px;height:35px;border-radius:12px;background:linear-gradient(135deg,#d2baff,#fcafd1);display:grid;place-items:center;color:#19151e;font-size:18px;box-shadow:0 5px 25px #bb9aff38}.top-right{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:8px}.live-dot{width:7px;height:7px;background:#8fe0b5;border-radius:50%;box-shadow:0 0 12px #8fe0b5}.hero{margin-bottom:27px}.eyebrow{color:var(--violet);font-size:11px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:12px}.hero h1{font:700 clamp(32px,5vw,49px)/1.08 Manrope,sans-serif;letter-spacing:-2px;margin:0 0 11px}.hero h1 span{color:var(--pink)}.hero p{margin:0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:19px;align-items:start}.panel{background:linear-gradient(150deg,#1a1b23,#15161c);border:1px solid var(--line);border-radius:19px;box-shadow:0 18px 55px #00000021}.create-panel{padding:23px}.label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.label{font-size:13px;font-weight:700}.hint{font-size:11px;color:var(--muted)}textarea{width:100%;height:127px;resize:vertical;background:#111218;border:1px solid #30313c;border-radius:12px;padding:14px 15px;color:var(--text);line-height:1.55;outline:none;transition:.2s}textarea:focus,input:focus,select:focus{border-color:#a98eff;box-shadow:0 0 0 3px #a98eff1a}textarea::placeholder,input::placeholder{color:#747684}.ideas{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:11px 0 19px}.ideas-label{font-size:11px;color:var(--muted);margin-right:2px}.idea{border:1px solid #32333e;background:#1c1d25;color:#c6c6d0;border-radius:99px;padding:6px 10px;font-size:11px;transition:.2s}.idea:hover{border-color:#a98eff;color:white}.settings{border:1px solid #30313c;background:#1c1d25;border-radius:12px;margin:0 0 17px;overflow:hidden}.settings-head{width:100%;display:flex;align-items:center;gap:10px;background:none;border:0;padding:13px 14px;text-align:left}.gear{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#292632;color:var(--violet);font-size:15px}.settings-name{font-size:12px;font-weight:700;flex:1}.settings-sub{display:block;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px}.chevron{color:#a8a8b4;font-size:13px;transition:.2s}.settings.open .chevron{transform:rotate(180deg)}.settings-body{display:none;padding:0 14px 15px;border-top:1px solid #30313c}.settings.open .settings-body{display:block}.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:13px 0}.field label{display:block;color:#b6b6c2;font-size:11px;margin-bottom:7px}.field select,.field input{width:100%;border:1px solid #343540;background:#121319;color:#f4f3f7;border-radius:9px;padding:10px 11px;outline:none;font-size:12px}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid #393a46;background:#20212a;color:#c5c5d0;padding:7px 10px;border-radius:99px;font-size:11px;transition:background .18s,border-color .18s,color .18s,transform .18s}.chip:hover{border-color:#9580c2;color:#fff}.chip.active,.chip[aria-pressed="true"]{border-color:#ad94ff;background:#392b4b;color:#f1eaff;box-shadow:0 0 0 2px #ad94ff26;transform:translateY(-1px)}.api-box{margin-top:14px;padding-top:13px;border-top:1px solid #30313c}.api-title{font-size:11px;font-weight:700;margin-bottom:9px}.api-fields{display:grid;gap:8px}.privacy-note{color:var(--muted);font-size:10px;line-height:1.45;margin:8px 0 0}.generate{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border:0;border-radius:12px;padding:14px;background:linear-gradient(110deg,#c4a8ff,#f3a6d0);color:#211629;font-weight:800;letter-spacing:.1px;box-shadow:0 8px 24px #be9cff26;transition:transform .18s,filter .18s}.generate:hover{filter:brightness(1.08);transform:translateY(-1px)}.generate:disabled{opacity:.6;cursor:wait;transform:none}.notice{min-height:17px;color:var(--muted);font-size:11px;line-height:1.45;margin-top:10px;text-align:center}.preview-panel{padding:15px}.preview-head{display:flex;align-items:center;justify-content:space-between;padding:2px 3px 13px}.preview-title{font-size:13px;font-weight:700}.preview-status{color:var(--muted);font-size:10px}.stage{position:relative;width:100%;aspect-ratio:1.15/1;background:radial-gradient(ellipse at center,#282330,#15161c 70%);border:1px solid #30313b;border-radius:13px;overflow:hidden;display:grid;place-items:center}.empty{text-align:center;padding:20px}.empty-icon{width:53px;height:53px;border-radius:18px;background:linear-gradient(140deg,#322942,#22202a);display:grid;place-items:center;margin:0 auto 13px;color:#d5baff;font-size:22px}.empty-title{font-size:12px;font-weight:700;margin-bottom:5px}.empty-sub{font-size:11px;color:var(--muted);line-height:1.5}.stage img{display:none;width:100%;height:100%;object-fit:contain;background:#0c0d11}.spinner{display:none;position:absolute;inset:0;background:#101116d9;place-items:center;text-align:center;z-index:2}.spinner.on{display:grid}.loader{width:32px;height:32px;border:3px solid #393342;border-top-color:#d0aafa;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 11px}@keyframes spin{to{transform:rotate(360deg)}}.loading-text{color:#e8dafa;font-size:12px}.preview-actions{display:flex;gap:8px;margin-top:11px}.action{flex:1;border:1px solid #373843;background:#20212a;border-radius:9px;padding:10px 8px;color:#d8d8e0;font-size:11px;font-weight:600}.action:hover:not(:disabled){background:#2b2b37;border-color:#60556e}.action.primary{background:#30263b;border-color:#55436c;color:#e5d6fa}.action.danger{flex:0 0 auto;color:#e6a9b5}.action:disabled{opacity:.38;cursor:not-allowed}.history{margin-top:19px;padding:20px}.history-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.history-title{font-size:13px;font-weight:700}.history-count{color:var(--muted);font-size:10px;margin-left:7px}.clear{border:0;background:transparent;color:#b2a2c8;font-size:10px;padding:5px}.clear:hover{color:#f0bdd3}.empty-history{border:1px dashed #353641;border-radius:11px;color:#858694;text-align:center;padding:20px 10px;font-size:11px}.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(116px,1fr));gap:10px}.thumb{position:relative;aspect-ratio:1;border:1px solid #363742;border-radius:10px;overflow:hidden;background:#111218;cursor:pointer}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.thumb:hover img{transform:scale(1.04)}.thumb.active{outline:2px solid #b79aff;outline-offset:1px}.thumb-x{position:absolute;top:6px;right:6px;width:23px;height:23px;border:0;border-radius:7px;background:#111218d9;color:white;font-size:15px;line-height:1}.thumb-num{position:absolute;bottom:6px;left:7px;font-size:9px;background:#111218bd;padding:3px 6px;border-radius:5px;color:#eee}.footer{text-align:center;color:#696b78;font-size:10px;margin-top:22px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#282733;border:1px solid #51455f;border-radius:10px;padding:11px 15px;font-size:12px;transition:.25s;z-index:10;box-shadow:0 8px 30px #0007}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ===== EFEITO DE GERAÇÃO ===== */
+.stage.generating::before{content:"";position:absolute;inset:-1px;border-radius:13px;padding:1px;z-index:3;pointer-events:none;background:conic-gradient(from var(--angle,0deg),#c4a8ff,#f3a6d0,#8fe0b5,#c4a8ff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rotateBorder 3s linear infinite;opacity:.9}
+@property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes rotateBorder{to{--angle:360deg}}
+.stage.generating::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(110deg,transparent 30%,#ffffff14 50%,transparent 70%);background-size:200% 100%;animation:shimmer 1.8s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.spinner{display:none;position:absolute;inset:0;place-items:center;text-align:center;z-index:4;background:radial-gradient(ellipse at center,#1a1622e6 0%,#101116f2 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.spinner.on{display:grid;animation:fadeIn .3s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.loader-wrap{position:relative;width:74px;height:74px;margin:0 auto 16px}
+.loader{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,#c4a8ff 90deg,#f3a6d0 180deg,transparent 220deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));animation:spin 1.1s linear infinite;filter:drop-shadow(0 0 10px #c4a8ff88)}
+.loader-core{position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3a2f4d,#1c1726);box-shadow:inset 0 0 18px #c4a8ff33,0 0 24px #c4a8ff22;display:grid;place-items:center;font-size:22px;color:#e9dcff;animation:pulseCore 1.6s ease-in-out infinite}
+@keyframes pulseCore{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.08);opacity:1}}
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.particles span{position:absolute;width:4px;height:4px;border-radius:50%;background:radial-gradient(circle,#e9dcff,#c4a8ff00);opacity:0;animation:float 4.5s ease-in-out infinite}
+.particles span:nth-child(1){left:12%;bottom:-10%;animation-delay:0s;width:5px;height:5px}
+.particles span:nth-child(2){left:28%;bottom:-10%;animation-delay:.7s}
+.particles span:nth-child(3){left:46%;bottom:-10%;animation-delay:1.4s;width:6px;height:6px;background:radial-gradient(circle,#fbc7e0,#f3a6d000)}
+.particles span:nth-child(4){left:63%;bottom:-10%;animation-delay:.3s}
+.particles span:nth-child(5){left:78%;bottom:-10%;animation-delay:1.8s;width:5px;height:5px;background:radial-gradient(circle,#b8f0d2,#8fe0b500)}
+.particles span:nth-child(6){left:90%;bottom:-10%;animation-delay:1.1s}
+@keyframes float{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:.9}85%{opacity:.7}100%{transform:translateY(-420px) scale(1.2);opacity:0}}
+.loading-text{color:#e8dafa;font-size:12px;letter-spacing:.2px;animation:breathe 2s ease-in-out infinite}
+.loading-sub{display:block;margin-top:5px;color:#8d879c;font-size:10px}
+@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.generate.busy{background:linear-gradient(110deg,#c4a8ff,#f3a6d0,#8fe0b5,#c4a8ff);background-size:300% 100%;animation:btnFlow 2.2s linear infinite;box-shadow:0 0 22px #c4a8ff55,0 8px 24px #be9cff33}
+@keyframes btnFlow{0%{background-position:0% 0}100%{background-position:300% 0}}
+.preview-panel.generating{box-shadow:0 0 0 1px #c4a8ff33,0 18px 55px #7c5cff26;transition:box-shadow .4s}
+
+/* ===== CONTADOR DE NÚMEROS NO CARREGAMENTO ===== */
+.loading-count{
+  font-family:'Manrope',sans-serif;font-weight:800;letter-spacing:-1px;
+  font-size:30px;line-height:1;color:#f1eaff;margin-bottom:6px;
+  text-shadow:0 0 18px #c4a8ff66;
+  font-variant-numeric:tabular-nums;
+}
+.loading-count .pct{font-size:15px;font-weight:700;color:#c4a8ff;margin-left:2px;letter-spacing:0}
+.loading-timer{font-size:10px;color:#8d879c;letter-spacing:.3px;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.loading-timer b{color:#c9b8ff;font-weight:700}
+/* barra de progresso fina embaixo */
+.progress-track{width:150px;height:4px;border-radius:99px;background:#2a2535;margin:0 auto 12px;overflow:hidden;box-shadow:inset 0 0 6px #0005}
+.progress-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#c4a8ff,#f3a6d0,#8fe0b5);background-size:200% 100%;transition:width .35s cubic-bezier(.22,1,.36,1);animation:fillFlow 2s linear infinite;box-shadow:0 0 10px #c4a8ff88}
+@keyframes fillFlow{0%{background-position:0% 0}100%{background-position:200% 0}}
+
+/* ===== MENSAGEM AMIGÁVEL DE "AGUARDE" ===== */
+.notice.wait{color:#e8c9a0;background:#2a2118;border:1px solid #5c4630;border-radius:9px;padding:8px 12px;display:inline-block;animation:noticePulse 2s ease-in-out infinite}
+.notice.wait::before{content:"⏳ ";font-size:11px}
+@keyframes noticePulse{0%,100%{box-shadow:0 0 0 0 #e8c9a000}50%{box-shadow:0 0 0 4px #e8c9a00d}}
+
+@media(max-width:760px){.wrap{padding:22px 16px 48px}.top{margin-bottom:34px}.grid{grid-template-columns:1fr}.preview-panel{grid-row:1}.stage{aspect-ratio:1.1/1}.create-panel{grid-row:2}.history{margin-top:15px}.hero h1{letter-spacing:-1.5px}.hero{margin-bottom:22px}}
+@media(max-width:390px){.wrap{padding-left:12px;padding-right:12px}.create-panel{padding:17px}.preview-panel{padding:11px}.options-grid{gap:9px}.thumbs{grid-template-columns:repeat(auto-fill,minmax(95px,1fr))}.top-right{font-size:10px}}
+@media (prefers-reduced-motion:reduce){.stage.generating::before,.stage.generating::after,.loader,.loader-core,.particles span,.loading-text,.generate.busy,.progress-fill,.notice.wait{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">✦</div>lumina</div><div class="top-right"><span class="live-dot"></span> suas criações, só nesta sessão</div></header>
+<section class="hero"><div class="eyebrow">estúdio de imagens com IA</div><h1>Uma ideia. <span>Uma imagem.</span></h1><p>Descreva o que imaginou e deixe a criatividade acontecer.</p></section>
+<main class="grid">
+<section class="panel create-panel">
+<div class="label-row"><label class="label" for="prompt">O que vamos criar?</label><span class="hint" id="charCount">0 / 500</span></div>
+<textarea id="prompt" maxlength="500" placeholder="Ex.: Uma casinha aconchegante no meio da floresta, luz dourada de fim de tarde, estilo ilustração de livro..."></textarea>
+<div class="ideas"><span class="ideas-label">Ideias:</span><button type="button" class="idea" data-prompt="Um gatinho astronauta flutuando no espaço, estrelas brilhantes, ilustração 3D adorável">🐈 Gato espacial</button><button type="button" class="idea" data-prompt="Uma cidade futurista à noite, letreiros neon refletidos na chuva, fotografia cinematográfica">🌃 Cidade neon</button><button type="button" class="idea" data-prompt="Um jardim mágico com flores gigantes e pequenas luzes flutuantes, arte de fantasia">🌷 Jardim mágico</button></div>
+<div class="settings" id="settings"><button type="button" class="settings-head" id="settingsToggle" aria-expanded="false"><span class="gear">☷</span><span class="settings-name">Ajustes da imagem<span class="settings-sub" id="settingsSummary">Qualidade, formato e estilo</span></span><span class="chevron">⌄</span></button><div class="settings-body">
+<div class="options-grid"><div class="field"><label for="quality">Qualidade</label><select id="quality"><option value="standard">Padrão</option><option value="high">Alta</option></select></div><div class="field"><label for="ratio">Formato</label><select id="ratio"><option value="square">Quadrado · 1:1</option><option value="portrait">Retrato · 2:3</option><option value="landscape">Paisagem · 3:2</option><option value="wide">Panorâmico · 16:9</option></select></div></div>
+<div class="field"><label>Estilo visual <span class="hint">· opcional</span></label><div class="chips" id="styles"><button type="button" class="chip" data-style="photorealistic" aria-pressed="false">📷 Fotográfico</button><button type="button" class="chip" data-style="digital illustration" aria-pressed="false">🎨 Ilustração</button><button type="button" class="chip" data-style="watercolor painting" aria-pressed="false">🖌 Aquarela</button><button type="button" class="chip" data-style="3D render" aria-pressed="false">🧊 3D</button><button type="button" class="chip" data-style="anime art" aria-pressed="false">✨ Anime</button></div></div>
+<div class="api-box"><div class="api-title">Conexão personalizada <span class="hint">· opcional</span></div><div class="api-fields"><div class="field"><label for="customUrl">URL base da sua API (HTTPS)</label><input id="customUrl" type="url" placeholder="https://api.exemplo.com/v1/images/generations" autocomplete="off"></div><div class="field"><label for="customKey">Chave da API</label><input id="customKey" type="password" placeholder="Inserida apenas nesta aba" autocomplete="new-password"></div></div><p class="privacy-note">A chave fica somente na memória desta aba e é apagada ao fechá-la. A conexão personalizada precisa aceitar requisições do navegador (CORS) e retornar uma imagem.</p></div>
+</div></div>
+<button type="button" class="generate" id="generate"><span>✦</span> Gerar imagem</button><div class="notice" id="notice" aria-live="polite"></div>
+</section>
+<section class="panel preview-panel" id="previewPanel"><div class="preview-head"><span class="preview-title">Prévia</span><span class="preview-status" id="previewStatus">Pronta para criar</span></div><div class="stage" id="stage"><div class="empty" id="empty"><div class="empty-icon">✧</div><div class="empty-title">Sua próxima ideia começa aqui</div><div class="empty-sub">A imagem gerada aparece nesta área.<br>Escolha os ajustes e toque em gerar.</div></div><img id="preview" alt="Imagem gerada"><div class="spinner" id="spinner">
+  <div class="particles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div>
+    <div class="loader-wrap"><div class="loader"></div><div class="loader-core">✦</div></div>
+    <div class="loading-count"><span id="countNum">0</span><span class="pct">%</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="loading-timer">aguarde <b id="timerNum">0s</b></div>
+    <div class="loading-text">Criando sua imagem…<span class="loading-sub">isso pode levar até 2 minutos</span></div>
+  </div>
+</div></div><div class="preview-actions"><button type="button" class="action primary" id="download" disabled>↓ &nbsp; Baixar WebP</button><button type="button" class="action danger" id="deleteCurrent" disabled title="Excluir imagem atual">⌫ Excluir</button></div></section>
+</main>
+<section class="panel history"><div class="history-head"><div><span class="history-title">Histórico</span><span class="history-count" id="historyCount">0 imagens</span></div><button type="button" class="clear" id="clearHistory" disabled>Excluir histórico</button></div><div class="empty-history" id="emptyHistory">As imagens desta sessão vão aparecer aqui.</div><div class="thumbs" id="thumbs"></div></section>
+<div class="footer">Imagens e histórico não são armazenados por este app. A geração depende da disponibilidade do serviço selecionado.</div>
+</div><div class="toast" id="toast" role="status"></div>
+<script>
+(()=>{
+'use strict';
+const $=s=>document.querySelector(s);
+const promptEl=$('#prompt'),quality=$('#quality'),ratio=$('#ratio'),settings=$('#settings');
+let images=[],currentId=null,busy=false;
+const dimensions={square:[1024,1024],portrait:[832,1248],landscape:[1248,832],wide:[1440,810]};
+function say(text){const n=$('#notice');n.textContent=text;n.classList.remove('wait')}
+function sayWait(text){const n=$('#notice');n.textContent=text||'Aguarde alguns segundos e tente novamente.';n.classList.add('wait')}
+function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400)}
+function selectedStyles(){return [...document.querySelectorAll('.chip[aria-pressed="true"]')].map(b=>b.dataset.style)}
+function promptCount(){$('#charCount').textContent=`${promptEl.value.length} / 500`}
+promptEl.addEventListener('input',promptCount);
+document.querySelectorAll('.idea').forEach(button=>button.addEventListener('click',()=>{promptEl.value=button.dataset.prompt;promptCount();promptEl.focus()}));
+$('#settingsToggle').addEventListener('click',()=>{const open=settings.classList.toggle('open');$('#settingsToggle').setAttribute('aria-expanded',String(open))});
+document.querySelectorAll('.chip').forEach(button=>button.addEventListener('click',()=>{
+ const wasActive=button.getAttribute('aria-pressed')==='true';
+ document.querySelectorAll('.chip').forEach(chip=>{chip.classList.remove('active');chip.setAttribute('aria-pressed','false')});
+ if(!wasActive){button.classList.add('active');button.setAttribute('aria-pressed','true')}
+ updateSummary();
+}));
+[quality,ratio].forEach(el=>el.addEventListener('change',updateSummary));
+function updateSummary(){const q=quality.value==='high'?'Alta':'Padrão',r=ratio.options[ratio.selectedIndex].text.split(' · ')[0],s=selectedStyles();$('#settingsSummary').textContent=`${q} · ${r}${s.length?' · '+document.querySelector('.chip[aria-pressed="true"]').textContent.trim():''}`}
+
+/* ===== CONTADOR ANIMADO + CRONÔMETRO ===== */
+let countRAF=null,countTimer=null,countStart=0;
+function startCounter(){
+  cancelAnimationFrame(countRAF);clearInterval(countTimer);
+  const num=$('#countNum'),fill=$('#progressFill'),timer=$('#timerNum');
+  countStart=performance.now();
+  const DURATION=90000; // progresso "suave" ao longo de 90s (desacelera perto do fim)
+  function tick(now){
+    const elapsed=now-countStart;
+    // progresso assintótico: rápido no começo, lento no fim, trava em ~99%
+    const t=elapsed/DURATION;
+    const eased=1-Math.pow(1-Math.min(t,1),3); // easeOutCubic
+    const pct=Math.min(99,Math.round(eased*99));
+    num.textContent=pct;
+    fill.style.width=pct+'%';
+    countRAF=requestAnimationFrame(tick);
+  }
+  countRAF=requestAnimationFrame(tick);
+  countTimer=setInterval(()=>{
+    const s=Math.floor((performance.now()-countStart)/1000);
+    timer.textContent=s+'s';
+  },250);
+}
+function stopCounter(){
+  cancelAnimationFrame(countRAF);clearInterval(countTimer);countRAF=null;countTimer=null;
+  $('#countNum').textContent='0';$('#progressFill').style.width='0%';$('#timerNum').textContent='0s';
+}
+
+function setBusy(value){
+  busy=value;
+  $('#generate').disabled=value;
+  $('#spinner').classList.toggle('on',value);
+  $('#previewStatus').textContent=value?'Gerando…':(currentId?'Imagem pronta':'Pronta para criar');
+  const stage=$('#stage'),panel=$('#previewPanel'),btn=$('#generate');
+  stage.classList.toggle('generating',value);
+  panel.classList.toggle('generating',value);
+  btn.classList.toggle('busy',value);
+  if(value){
+    startCounter();
+    const p=$('.particles');if(p){p.replaceWith(p.cloneNode(true))}
+  }else{
+    stopCounter();
+  }
+}
+
+function setCurrent(id){currentId=id;const item=images.find(x=>x.id===id),img=$('#preview');if(item){img.src=item.url;img.style.display='block';$('#empty').style.display='none';$('#download').disabled=false;$('#deleteCurrent').disabled=false;$('#previewStatus').textContent='Imagem pronta'}else{img.removeAttribute('src');img.style.display='none';$('#empty').style.display='block';$('#download').disabled=true;$('#deleteCurrent').disabled=true;$('#previewStatus').textContent='Pronta para criar'}document.querySelectorAll('.thumb').forEach(el=>el.classList.toggle('active',el.dataset.id===id))}
+function renderHistory(){const list=$('#thumbs');list.replaceChildren();images.forEach((item,index)=>{const box=document.createElement('div');box.className='thumb'+(item.id===currentId?' active':'');box.dataset.id=item.id;box.title=item.prompt;const img=document.createElement('img');img.src=item.url;img.alt=`Imagem ${index+1}`;const num=document.createElement('span');num.className='thumb-num';num.textContent=`Imagem ${index+1}`;const del=document.createElement('button');del.type='button';del.className='thumb-x';del.textContent='×';del.title='Excluir esta imagem';del.setAttribute('aria-label','Excluir imagem');del.addEventListener('click',event=>{event.stopPropagation();removeImage(item.id)});box.append(img,num,del);box.addEventListener('click',()=>setCurrent(item.id));list.append(box)});$('#emptyHistory').style.display=images.length?'none':'block';$('#historyCount').textContent=`${images.length} ${images.length===1?'imagem':'imagens'}`;$('#clearHistory').disabled=!images.length}
+function removeImage(id){const pos=images.findIndex(x=>x.id===id);if(pos<0)return;const [removed]=images.splice(pos,1);URL.revokeObjectURL(removed.url);if(currentId===id){const next=images[Math.min(pos,images.length-1)];setCurrent(next?.id||null)}renderHistory()}
+function clearHistory(){images.forEach(x=>URL.revokeObjectURL(x.url));images=[];currentId=null;setCurrent(null);renderHistory();say('');toast('Histórico excluído')}
+$('#deleteCurrent').addEventListener('click',()=>{if(currentId)removeImage(currentId)});
+$('#clearHistory').addEventListener('click',clearHistory);
+function safeEndpoint(raw){let u;try{u=new URL(raw)}catch{return null}if(u.protocol!=='https:'&&!(u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)))return null;if(u.username||u.password)return null;const h=u.hostname.toLowerCase();if(h==='localhost'||h.endsWith('.local')||/^127\./.test(h)||/^10\./.test(h)||/^192\.168\./.test(h)||/^172\.(1[6-9]|2\d|3[01])\./.test(h)||h==='0.0.0.0')return null;return u}
+async function timeoutFetch(url,options={},ms=15000){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),ms);try{return await fetch(url,{...options,signal:controller.signal})}finally{clearTimeout(timer)}}
+async function fetchImage(prompt){
+ const customUrl=$('#customUrl').value.trim(),key=$('#customKey').value;
+ if(customUrl){
+  const endpoint=safeEndpoint(customUrl);if(!endpoint)throw Error('URL inválida. Use uma URL HTTPS pública (sem usuário ou senha).');
+  const body={prompt,model:'flux',width:dimensions[ratio.value][0],height:dimensions[ratio.value][1],quality:quality.value};
+  let response;try{response=await timeoutFetch(endpoint.href,{method:'POST',headers:{'Content-Type':'application/json',...(key?{Authorization:`Bearer ${key}`}:{})},body:JSON.stringify(body)},15000)}catch(error){if(error.name==='AbortError')throw Error('A API personalizada demorou mais de 15 segundos.');throw Error('Não foi possível conectar à API. Confira a URL e se ela permite conexão pelo navegador (CORS).')}
+  if(!response.ok)throw Error(`Sua API respondeu com erro ${response.status}. Confira a URL, a chave e o formato esperado.`);
+  const type=(response.headers.get('content-type')||'').toLowerCase();if(type.startsWith('image/'))return await response.blob();
+  if(type.includes('json')){const data=await response.json(),raw=data?.data?.[0]?.url||data?.data?.[0]?.b64_json||data?.url||data?.image;if(typeof raw==='string'){if(raw.startsWith('data:')){const r=await fetch(raw);return await r.blob()}if(/^https:\/\//i.test(raw)){const r=await timeoutFetch(raw,{},15000);if(!r.ok)throw Error('Não foi possível baixar a imagem retornada pela API.');return await r.blob()}if(/^[A-Za-z0-9+/=]+$/.test(raw)){const bin=atob(raw),arr=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);return new Blob([arr],{type:'image/png'})}}}
+  throw Error('A API não retornou uma imagem reconhecida (arquivo, URL ou base64).');
+ }
+ const [width,height]=dimensions[ratio.value],styles=selectedStyles(),fullPrompt=styles.length?`${prompt}, ${styles[0]}`:prompt;
+ const url=new URL(`https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}`);
+ url.searchParams.set('model','flux');url.searchParams.set('width',String(width));url.searchParams.set('height',String(height));url.searchParams.set('nologo','true');url.searchParams.set('private','true');if(quality.value==='high')url.searchParams.set('enhance','true');
+ let response;try{response=await timeoutFetch(url.href,{},120000)}catch(error){if(error.name==='AbortError')throw Error('A geração demorou mais de 2 minutos. Tente de novo com outra descrição.');throw Error('Não foi possível conectar ao serviço de imagens. Confira sua internet e tente novamente.')}
+ if(!response.ok)throw Error(`O serviço de imagens respondeu com erro ${response.status}. Tente novamente em instantes.`);
+ const blob=await response.blob();if(!blob.type.startsWith('image/'))throw Error('O serviço não retornou uma imagem. Tente novamente.');return blob;
+}
+$('#generate').addEventListener('click',async()=>{
+ const text=promptEl.value.trim();if(!text){say('Escreva uma descrição para gerar a imagem.');promptEl.focus();return}if(busy)return;
+ say('A geração pode levar alguns instantes…');setBusy(true);
+ try{const blob=await fetchImage(text);const id=globalThis.crypto?.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random()}`;images.unshift({id,url:URL.createObjectURL(blob),blob,prompt:text});setCurrent(id);renderHistory();say('Imagem criada com sucesso!')}
+ catch(error){
+   // Em vez de mostrar o erro cru, exibe mensagem amigável de aguardar
+   sayWait('Aguarde alguns segundos e tente novamente.');
+ }
+ finally{setBusy(false)}
+});
+async function toWebp(blob){const bitmap=await createImageBitmap(blob),canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);bitmap.close();return new Promise((resolve,reject)=>canvas.toBlob(result=>result?resolve(result):reject(Error('Falha ao converter para WebP.')),'image/webp',.92))}
+$('#download').addEventListener('click',async()=>{const item=images.find(x=>x.id===currentId);if(!item)return;const button=$('#download');button.disabled=true;try{const webp=await toWebp(item.blob),objectUrl=URL.createObjectURL(webp),link=document.createElement('a');link.href=objectUrl;link.download=`lumina-${new Date().toISOString().slice(0,10)}.webp`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);toast('Imagem baixada em WebP')}catch{toast('Não foi possível converter a imagem para WebP')}finally{button.disabled=false}});
+})();
+</script>
+</body>
+</html>
